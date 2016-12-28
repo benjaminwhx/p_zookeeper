@@ -29,10 +29,10 @@ Zookeeper运行在JDK1.6或更高版本以上。它作为Zookeeper服务的整�
 
 下面是设置成为集群服务的步骤。这些步骤应该在集群里的每台主机上执行：
 
-1、安装Java JDK。你可以使用系统的原生包装系统，或者从JDK下载：[jdk](http://java.sun.com/javase/downloads/index.jsp)
-2、设置Java堆大小。这对于避免swapping非常重要，它将严重降低Zookeeper的性能。确定正确值，使用负载测试，并确定低于引起swap的的限制。保守的 - 对于4GB的机器使用最大堆大小3GB。
-3、安装Zookeeper服务包。可以从以下地址下载：[zookeeper_download](http://zookeeper.apache.org/releases.html)
-4、新建一个配置文件。这个文件可以叫任何名字。使用下面的设置作为出发点：
+1. 安装Java JDK。你可以使用系统的原生包装系统，或者从JDK下载：[jdk](http://java.sun.com/javase/downloads/index.jsp)
+2. 设置Java堆大小。这对于避免swapping非常重要，它将严重降低Zookeeper的性能。确定正确值，使用负载测试，并确定低于引起swap的的限制。保守的 - 对于4GB的机器使用最大堆大小3GB。
+3. 安装Zookeeper服务包。可以从以下地址下载：[zookeeper_download](http://zookeeper.apache.org/releases.html)
+4. 新建一个配置文件。这个文件可以叫任何名字。使用下面的设置作为出发点：
 
 ```
 tickTime=2000

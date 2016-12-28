@@ -20,10 +20,10 @@ Name Service和configuration是Zookeeper的两个主要应用。这两个功能�
 
 分布式系统使用barriers阻塞一组节点的处理直到遇见某个条件的时候才允许所有节点继续下去。Barriers通过在Zookeeper指定一个barrier节点实现。如果barriers节点存在就在原位。这是假象的代码：
 
-1、客户端在阻塞节点上调用Zookeeper API的exists()方法，设置watch为true。
-2、如果exists()返回false，阻塞消失并且客户端继续。
-3、另外，如果exists()返回true，客户端等待Zookeeper阻塞节点的watch事件。
-4、当触发watch事件时，客户端重新调用exists()，再次等待直到阻塞节点移除。
+1. 客户端在阻塞节点上调用Zookeeper API的exists()方法，设置watch为true。
+2. 如果exists()返回false，阻塞消失并且客户端继续。
+3. 另外，如果exists()返回true，客户端等待Zookeeper阻塞节点的watch事件。
+4. 当触发watch事件时，客户端重新调用exists()，再次等待直到阻塞节点移除。
 
 ### 双重阻塞
 
@@ -32,20 +32,20 @@ Name Service和configuration是Zookeeper的两个主要应用。这两个功能�
 这个方法的代码的阻塞节点为b。每个客户端进程 p 进入的时候注册到阻塞节点并在准备离开的时候注销。节点通过下面的Enter程序注册阻塞节点，它在开始运算之前等待直到x个客户端进程注册。(这里的x的值由你自己决定。)
 
 **Enter**
-&emsp;&emsp;1、生成节点名字 n = b+“/”+p
-&emsp;&emsp;2、设置watch: exists(b + "/ready", true)
-&emsp;&emsp;3、创建子节点: create( n, EPHEMERAL)
-&emsp;&emsp;4、L = getChildren(b, false)
-&emsp;&emsp;5、如果L小于x，等待watch事件
-&emsp;&emsp;6、否则create(b + "/ready", REGULAR)
+1. 生成节点名字 n = b+“/”+p
+2. 设置watch: exists(b + "/ready", true)
+3. 创建子节点: create( n, EPHEMERAL)
+4. L = getChildren(b, false)
+5. 如果L小于x，等待watch事件
+6. 否则create(b + "/ready", REGULAR)
 
 **Leave**
-&emsp;&emsp;1、L = getChildren(b, false)
-&emsp;&emsp;2、如果没有子节点，退出
-&emsp;&emsp;3、如果p只是L的进程节点，删除并退出
-&emsp;&emsp;4、如果p是L的最小进程节点，等待L里最高的进程节点。
-&emsp;&emsp;5、否则删除如果仍然存在等待最小的进程节点
-&emsp;&emsp;6、goto 1
+1. L = getChildren(b, false)
+2. 如果没有子节点，退出
+3. 如果p只是L的进程节点，删除并退出
+4. 如果p是L的最小进程节点，等待L里最高的进程节点。
+5. 否则删除如果仍然存在等待最小的进程节点
+6. goto 1
 
 进入的时候，所有的进程在ready节点上设置watch并创建一个临时节点作为阻塞节点的子节点。除了最后一个之外的每个进程进入阻塞并等待ready节点（在第5行）。进程创建第x个节点，最后的进程，将看到子节点列表里的x节点并创建ready节点，唤醒其他进程。注意等待的进程只在退出的时候唤醒，所以等待是高效的。
 
@@ -73,11 +73,11 @@ Name Service和configuration是Zookeeper的两个主要应用。这两个功能�
 
 客户端想要获得一个锁要做以下事情：
 
-&emsp;&emsp;1、调用create()方法，参数是"_locknode_/lock_"的路径名、序列和临时节点标记
-&emsp;&emsp;2、在lock节点上调用getChildren()而不设置watch标记(这对避免羊群效应非常重要)
-&emsp;&emsp;3、如果在第一步创建的路径名有最小序列值的后缀，客户端获得lock并退出协议
-&emsp;&emsp;4、客户端在lock目录的下一个最小序列值的路径上使用watch标记调用exists()
-&emsp;&emsp;5、如果exists()返回false，进入第二步。否则，进入第二步之前等待上一步路径的通知。
+1. 调用create()方法，参数是"_locknode_/lock_"的路径名、序列和临时节点标记
+2. 在lock节点上调用getChildren()而不设置watch标记(这对避免羊群效应非常重要)
+3. 如果在第一步创建的路径名有最小序列值的后缀，客户端获得lock并退出协议
+4. 客户端在lock目录的下一个最小序列值的路径上使用watch标记调用exists()
+5. 如果exists()返回false，进入第二步。否则，进入第二步之前等待上一步路径的通知。
 
 解锁协议非常简单：客户端想要释放锁只需要简单的删除第一步创建的节点即可。
 
@@ -93,20 +93,20 @@ Name Service和configuration是Zookeeper的两个主要应用。这两个功能�
 
 #### 获得一个读取锁：
 
-&emsp;&emsp;1、调用create()方法创建一个"_locknode_/read-"的节点。这是稍后在协议里使用的lock节点。确保同时设置sequence和ephemeral标记。
-&emsp;&emsp;2、在lock节点上调用getChildren()方法而不设置watch标记 - 这非常重要，因为它避免羊群效应。
-&emsp;&emsp;3、如果没有"write-"开头的子节点并且有一个比第一步创建的节点更小的序列号，客户端获得lock并可以离开协议。
-&emsp;&emsp;4、否则，调用exists()，使用watch标记，设置在lock目录的"write-"开头下一个更小序列号的子节点上。
-&emsp;&emsp;5、如果exists()返回false，进入第二步。
-&emsp;&emsp;6、否则，在进入第二步之前等待在上一步pathname的通知。
+1. 调用create()方法创建一个"_locknode_/read-"的节点。这是稍后在协议里使用的lock节点。确保同时设置sequence和ephemeral标记。
+2. 在lock节点上调用getChildren()方法而不设置watch标记 - 这非常重要，因为它避免羊群效应。
+3. 如果没有"write-"开头的子节点并且有一个比第一步创建的节点更小的序列号，客户端获得lock并可以离开协议。
+4. 否则，调用exists()，使用watch标记，设置在lock目录的"write-"开头下一个更小序列号的子节点上。
+5. 如果exists()返回false，进入第二步。
+6. 否则，在进入第二步之前等待在上一步pathname的通知。
 
 #### 获得写入锁：
 
-&emsp;&emsp;1、调用create()创建一个"_locknode_/write-"的节点。这是协议里稍后说的lock节点。确保同时设置sequence和ephemeral标记。
-&emsp;&emsp;2、不设置watch标记调用getChildren()方法 - 这非常重要，因为它避免羊群效应。
-&emsp;&emsp;3、如果没有序列号小于第一步设置节点序列号的子节点，客户端得到锁并退出协议。
-&emsp;&emsp;4、调用exists()，使用watch标记，设置在下一个更小序列号的节点上。
-&emsp;&emsp;5、如果exists()返回false，进入第二步。否则，在进入第二步之前等待上一步pathname的通知。
+1. 调用create()创建一个"_locknode_/write-"的节点。这是协议里稍后说的lock节点。确保同时设置sequence和ephemeral标记。
+2. 不设置watch标记调用getChildren()方法 - 这非常重要，因为它避免羊群效应。
+3. 如果没有序列号小于第一步设置节点序列号的子节点，客户端得到锁并退出协议。
+4. 调用exists()，使用watch标记，设置在下一个更小序列号的节点上。
+5. 如果exists()返回false，进入第二步。否则，在进入第二步之前等待上一步pathname的通知。
 
 **注意**
 这个秘诀很可能创建一个羊群效应：当有一大批客户端等待一个读取锁，并且当最小序列号的"write-"节点被删除的同时或多或少的获得通知实际上。这是有效的行为：因为所有的等待的读者客户端应该释放因为他们有锁。羊群效应是指发布一个"herd"事实上只有一个或少量机器可以继续
@@ -143,14 +143,14 @@ Name Service和configuration是Zookeeper的两个主要应用。这两个功能�
 
 让ELECTION成为应用选择的路径。自愿者成为领导者。
 
-&emsp;&emsp;1、创建节点z，路径是"ELECTION/n_"同时指定SEQUENCE和EPHEMERAL标记；
-&emsp;&emsp;2、让C成为"ELECTION"的子节点，并且i是z节点的序列号；
-&emsp;&emsp;3、检测"ELECTION/n_j"的变化，这里的j是最大序列号,这里j小于i并且n_j是C里的节点。
+1. 创建节点z，路径是"ELECTION/n_"同时指定SEQUENCE和EPHEMERAL标记；
+2. 让C成为"ELECTION"的子节点，并且i是z节点的序列号；
+3. 检测"ELECTION/n_j"的变化，这里的j是最大序列号,这里j小于i并且n_j是C里的节点。
 
 接收节点删除的通知：
 
-&emsp;&emsp;1、让C成为ELECTION的新子节点；
-&emsp;&emsp;2、如果z是C里的最小节点，然后执行领导者过程；
-&emsp;&emsp;3、否则，检测"ELECTION/n_j"的变化，这里的j是最大序列号，这里j小于i并且n_j是C里的节点。
+1. 让C成为ELECTION的新子节点；
+2. 如果z是C里的最小节点，然后执行领导者过程；
+3. 否则，检测"ELECTION/n_j"的变化，这里的j是最大序列号，这里j小于i并且n_j是C里的节点。
 
 注意子节点列表里没有之前的节点并不意味着节点的创建者知道他是当前的领导者。应用可能考虑创建一个单独的节点去通知领导者已经执行了领导者选举过程。
