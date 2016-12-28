@@ -8,7 +8,7 @@
 
 查看[Zookeeper Administrator's Guide](http://zookeeper.majunwei.com/document/3.4.6/AdminGuide.html)中的System Requirements 部分。
 
-##　下载
+## 下载
 
 获取Zookeeper的发布包，从Apache Download Mirros中下载一个最新的[稳定](http://zookeeper.apache.org/releases.html)版本。
 
