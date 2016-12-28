@@ -179,7 +179,7 @@ numChildren = 0
 
 先就这样，想探索更多，继续这个文档的其他部分和查看[Programmer's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Programmer's%20Guide.md).
 
-##　Zookeeper编程
+## Zookeeper编程
 
 Zookeeer有一个java绑定和一个C绑定。它们在功能上是相同的。C绑定有两种形式：单线程和多线程。它们的区别仅仅是怎么循环消息。获取更多消息，查看[Programming Examples in the ZooKeeper Programmer's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Programmer's%20Guide.md)使用不同APIs的实例代码。
 
