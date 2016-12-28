@@ -2,11 +2,11 @@
 
 ## 简介
 
-此文档包含了Zookeeper的快速入门指南。它主要的目的是让开发人员快速试用Zookeeper，且包含了单个Zookeeper服务器的简单安装介绍，一些验证运行的命令，和一个简单的编程实例。最后，为了方便，还有一些复杂的安装部分，例如运行主从复制的部署，和优化事务日志。然而对于商业部署的完整介绍，请参考[ZooKeeper Administrator's Guide](http://zookeeper.majunwei.com/document/3.4.6/AdminGuide.html)
+此文档包含了Zookeeper的快速入门指南。它主要的目的是让开发人员快速试用Zookeeper，且包含了单个Zookeeper服务器的简单安装介绍，一些验证运行的命令，和一个简单的编程实例。最后，为了方便，还有一些复杂的安装部分，例如运行主从复制的部署，和优化事务日志。然而对于商业部署的完整介绍，请参考[ZooKeeper Administrator's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/Administrator's%20Guide.md)
 
 ## 前提条件
 
-查看[Zookeeper Administrator's Guide](http://zookeeper.majunwei.com/document/3.4.6/AdminGuide.html)中的System Requirements 部分。
+查看[Zookeeper Administrator's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/Administrator's%20Guide.md)中的System Requirements 部分。
 
 ## 下载
 
