@@ -2,11 +2,11 @@
 
 ## 简介
 
-此文档包含了Zookeeper的快速入门指南。它主要的目的是让开发人员快速试用Zookeeper，且包含了单个Zookeeper服务器的简单安装介绍，一些验证运行的命令，和一个简单的编程实例。最后，为了方便，还有一些复杂的安装部分，例如运行主从复制的部署，和优化事务日志。然而对于商业部署的完整介绍，请参考[ZooKeeper Administrator's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/Administrator's%20Guide.md)
+此文档包含了Zookeeper的快速入门指南。它主要的目的是让开发人员快速试用Zookeeper，且包含了单个Zookeeper服务器的简单安装介绍，一些验证运行的命令，和一个简单的编程实例。最后，为了方便，还有一些复杂的安装部分，例如运行主从复制的部署，和优化事务日志。然而对于商业部署的完整介绍，请参考[ZooKeeper Administrator's Guide](../Admin&Ops/Administrator's%20Guide.md)
 
 ## 前提条件
 
-查看[Zookeeper Administrator's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/Administrator's%20Guide.md)中的System Requirements 部分。
+查看[Zookeeper Administrator's Guide](../Admin&Ops/Administrator's%20Guide.md)中的System Requirements 部分。
 
 ## 下载
 
@@ -177,11 +177,11 @@ numChildren = 0
 [zkshell: 18]
 ```
 
-先就这样，想探索更多，继续这个文档的其他部分和查看[Programmer's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Programmer's%20Guide.md).
+先就这样，想探索更多，继续这个文档的其他部分和查看[Programmer's Guide](../developer/Programmer's%20Guide.md).
 
 ## Zookeeper编程
 
-Zookeeer有一个java绑定和一个C绑定。它们在功能上是相同的。C绑定有两种形式：单线程和多线程。它们的区别仅仅是怎么循环消息。获取更多消息，查看[Programming Examples in the ZooKeeper Programmer's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Programmer's%20Guide.md)使用不同APIs的实例代码。
+Zookeeer有一个java绑定和一个C绑定。它们在功能上是相同的。C绑定有两种形式：单线程和多线程。它们的区别仅仅是怎么循环消息。获取更多消息，查看[Programming Examples in the ZooKeeper Programmer's Guide](../developer/Programmer's%20Guide.md)使用不同APIs的实例代码。
 
 ## 运行主从复制的Zookeeper
 
