@@ -8,36 +8,36 @@ Zookeeper是一个高性能的分布式系统的协调服务。它在一个简�
 
 针对于客户端开发人员、管理员和贡献者的技术综述文档。
 
-* [Overview](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/overview/Overview.md)（Zookeeper简介）-Zookeeper的鸟瞰图，包括Zookeeper的设计思想和技术架构。
-* [Getting Started](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/overview/Getting%20Started.md)（Zookeeper入门指南）-针对于开发者Zookeeper安装、运行、和编程的辅导指南。
-* [Release Notes](http://zookeeper.apache.org/doc/trunk/releasenotes.html)（发行说明）-新开发者和用户面对的特性、改善、和不兼容性。
+* [Overview](./Overview.md)（Zookeeper简介）-Zookeeper的鸟瞰图，包括Zookeeper的设计思想和技术架构。
+* [Getting Started](./Getting%20Started.md)（Zookeeper入门指南）-针对于开发者Zookeeper安装、运行、和编程的辅导指南。
+* [Release Notes](http://zookeeper.apache.org/doc/r3.5.3-beta/releasenotes.html)（发行说明）-新开发者和用户面对的特性、改善、和不兼容性。
 
 # 开发人员
 
 针对于开发人员使用Zookeeper客户端API的文档。
 
-* [API Docs](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/API%20Docs.md)（API指南）-Zookeeper客户端API的技术参考说明书。
-* [Programmer's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Programmer's%20Guide.md)（Zookeeper开发者编程指南）-客户端应用程序开发者指南。
-* [Zookeeper Java Example](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Java%20Example.md)（Zookeeper编程实例）-用java写的简单的Zookeeper客户端应用程序。
-* [Barrier and Queue Tutorial](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Barrier%20and%20Queue%20Tutorial.md)（Zookeeper阻塞和队列教程）-阻塞和队列的实例实现。
-* [Zookeeper Recipes](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/developer/Repices.md)（Zookeeper秘诀）-在分布式应用程序中对于常见问题的更高级的解决方案。
+* [API Docs](../developer/API%20Docs.md)（API指南）-Zookeeper客户端API的技术参考说明书。
+* [Programmer's Guide](../developer/Programmer's%20Guide.md)（Zookeeper开发者编程指南）-客户端应用程序开发者指南。
+* [Zookeeper Java Example](../developer/Java%20Example.md)（Zookeeper编程实例）-用java写的简单的Zookeeper客户端应用程序。
+* [Barrier and Queue Tutorial](../developer/Barrier%20and%20Queue%20Tutorial.md)（Zookeeper阻塞和队列教程）-阻塞和队列的实例实现。
+* [Zookeeper Recipes](../developer/Repices.md)（Zookeeper秘诀）-在分布式应用程序中对于常见问题的更高级的解决方案。
 
 # 管理员和运维人员
 
 针对于管理员和运维人员部署Zookeeper的文档。
 
-* [Administrator's Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/Administrator's%20Guide.md)（Zookeeper管理员指南）-针对于管理员和其他部署Zookeeper的用户指南。
-* [Quota Guide](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/Quota%20Guide.md)（Zookeeper配置指南）-针对于系统管理员的Zookeeper中配置的用户指南。
-* [JMX](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/JMX.md)（JMX）-在Zookeeper中如何启用JMX。
+* [Administrator's Guide](../Admin&Ops/Administrator's%20Guide.md)（Zookeeper管理员指南）-针对于管理员和其他部署Zookeeper的用户指南。
+* [Quota Guide](../Admin&Ops/Quota%20Guide.md)（Zookeeper配置指南）-针对于系统管理员的Zookeeper中配置的用户指南。
+* [JMX](../Admin&Ops/JMX.md)（JMX）-在Zookeeper中如何启用JMX。
 * [Hierarchical quorums]()（分层次的法定人数）
-* [Observers](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/Admin%26Ops/Observers%20Guide.md)（观察者）-无投票权的成员更容易增加系统的扩展性。
+* [Observers](../Admin&Ops/Observers%20Guide.md)（观察者）-无投票权的成员更容易增加系统的扩展性。
 * [Dynamic Reconfiguration]()（动态重新配置）-在Zookeeper中如何使用动态重新配置。
 
 # 贡献者
 
 针对于开发者贡献Zookeeper开源项目的文档。
 
-[Zookeeper Internals](https://github.com/benjaminwhx/zookeeper-example/blob/master/translate/contributor/Zookeeper%20Internals.md)（Zookeeper内部构件）-Zookeeper在内部运作的各式各样的主题。
+[Zookeeper Internals](../contributor/Zookeeper%20Internals.md)（Zookeeper内部构件）-Zookeeper在内部运作的各式各样的主题。
 
 # 其他文档
 

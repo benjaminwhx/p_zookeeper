@@ -14,7 +14,7 @@ Zookeeper的实现提供了一个优质的高性能、高可用，严格的访�
 
 **复制**，像分布式处理一样，Zookeeper自己在处理协调的时候要复制多个主机。
 
-![Zookeeper Service](http://zookeeper.apache.org/doc/trunk/images/zkservice.jpg)
+![Zookeeper Service](../../image/zkservice.jpg)
 
 Zookeeper服务的组成部分必须彼此都知道彼此，它们维持了一个内存状态影像，连同事务日志和快照在一个持久化的存储中。只要大多数的服务器是可用的，Zookeeper服务就是可用的。
 
@@ -28,7 +28,7 @@ Zookeeper服务的组成部分必须彼此都知道彼此，它们维持了一�
 
 Zookeeper提供的命名空间非常像一个标准的文件系统。一个名字是一系列的以'/'隔开的一个路径元素。Zookeeper命名空间中所有的节点都是通过路径识别。
 
-![ZooKeeper's Hierarchical Namespace](http://zookeeper.apache.org/doc/trunk/images/zknamespace.jpg)
+![ZooKeeper's Hierarchical Namespace](../../image/zknamespace.jpg)
 
 ## Nodes and ephemeral nodes（节点和临时节点）
 
@@ -86,7 +86,7 @@ sync（同步）
 
 ZooKeeper Components 展示了ZooKeeper服务的高级组件。除了请求处理器的异常之外，组成ZooKeeper服务的每个服务器复制它们自己组件的副本。
 
-![ZooKeeper Components](http://zookeeper.apache.org/doc/trunk/images/zkcomponents.jpg)
+![ZooKeeper Components](../../image/zkcomponents.jpg)
 
 Replicated database是一个内存数据库。它包含全部的数据树。为了可恢复性，更新记录保存到磁盘上，并且写入操作在应用到内存数据库之前被序列化到磁盘上。
 
@@ -104,7 +104,7 @@ Zookeeper使用了一个自定义的原子消息协议。因为消息层是原�
 
 ZooKeeper是设计成高性能的，但是真的这样么？ZooKeeper在雅虎的研发团队研究结果显明它真的如此。(看[ZooKeeper Throughput as the Read-Write Ratio Varies](http://zookeeper.apache.org/doc/r3.4.6/zookeeperOver.html#fg_zkPerfRW))应用在读取性能上表现地写性能高得多，因为写操作要涉及所有服务器的同步。（在调度服务中读性能超过写性能是普遍的情况）
 
-![ZooKeeper Throughput as the Read-Write Ratio Varies](http://zookeeper.apache.org/doc/trunk/images/zkperfRW-3.2.jpg)
+![ZooKeeper Throughput as the Read-Write Ratio Varies](../../image/zkperfRW-3.2.jpg)
 
 上图是Zookeeper3.2版本在dual 2Ghz Xeon and two SATA 15K RPM 驱动配置的服务器上的吞吐量图像。一个驱动作为专门的Zookeeper日志装置。快照写进操作系统驱动。1k的写请求和1K的读取请求。"Servers" 表明了Zookeeper全体的大小，组成Zookeeper服务的服务器数量。接近于30台机器模仿客户端。Zookeeper全体被配置为leaders不允许客户端连接。
  
@@ -124,7 +124,7 @@ ZooKeeper是设计成高性能的，但是真的这样么？ZooKeeper在雅虎�
  
  展示运行在7台机器上的ZooKeeper服务在故障发生后随着时间的推进系统的行为。我们运行跟上面测试同样的环境上，但这次只保持30%的写入，保持在一个保守的负载。
  
- ![Reliability in the Presence of Errors](http://zookeeper.apache.org/doc/trunk/images/zkperfreliability.jpg)
+ ![Reliability in the Presence of Errors](../../image/zkperfreliability.jpg)
  
  从图表中我们得到一些重要的观察。第一，如果followers失效和迅速恢复，zooKeeper能够保持一个高吞吐量无视失效。但是可能重要的是，leader选举算法允许系统快速恢复来避免吞吐量的大幅下降。在我们的观察当中，ZooKeeper只需要不到200ms来选举中一个新的leader。第三，随着follower恢复，ZooKeeper能够提高吞吐量一旦他们开始处理请求。
  
